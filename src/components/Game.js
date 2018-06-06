@@ -20,12 +20,25 @@ const possibleCombinationSum = function(arr, n) {
   return false;
 };
 
+const randomIcons = function() {
+  const arrayIcons = [
+    'fas fa-walking', 'fas fa-volleyball-ball', 'fas fa-utensil-spoon', 'fas fa-user-tie', 'fas fa-user-secret', 'fas fa-user-ninja', 'fas fa-user-astronaut', 'fas fa-user', 'fas fa-umbrella', 'fas fa-tshirt', 'fas fa-truck', 'fas fa-trophy', 'fas fa-tree', 'fab fa-sticker-mule', 'fas fa-star', 'fas fa-space-shuttle', 'fas fa-snowflake', 'fas fa-smile', 'fas fa-skull', 'fas fa-rocket', 'fas fa-robot', 'fas fa-poo', 'fas fa-plane', 'fas fa-piggy-bank', 'fas fa-motorcycle', 'fas fa-moon', 'fas fa-lightbulb', 'fas fa-lemon', 'fas fa-laptop', 'fas fa-helicopter', 'fas fa-heart', 'fas fa-futbol', 'fab fa-fort-awesome', 'fas fa-football-ball', 'fas fa-flag-checkered', 'fas fa-fighter-jet', 'fas fa-dice-five', 'fas fa-coffee', 'fas fa-cloud', 'fas fa-circle', 'fas fa-child', 'fas fa-car', 'fas fa-bus', 'fas fa-building', 'fas fa-bowling-ball', 'fas fa-bicycle', 'fas fa-bell', 'fas fa-basketball-ball', 'fas fa-bomb', 'fas fa-bolt'
+  ];
+
+  const index = Math.floor(Math.random() * arrayIcons.length);
+
+  return arrayIcons[index];
+}
+
 const Stars = (props) => {
+  const icon = randomIcons();
   return (
     <div className="col-5">
+      <div className="elements">
       {_.range(props.numberOfStars).map(i => 
-        <i key={i} className="fa fa-star"></i>
+        <i key={i} className={icon}></i>
       )}
+      </div>
     </div>
   );
 }
