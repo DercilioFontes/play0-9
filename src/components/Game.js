@@ -31,12 +31,11 @@ const randomIcons = function() {
 }
 
 const Stars = (props) => {
-  const icon = randomIcons();
   return (
     <div className="col-5">
       <div className="elements">
       {_.range(props.numberOfStars).map(i => 
-        <i key={i} className={icon}></i>
+        <i key={i} className={props.icon}></i>
       )}
       </div>
     </div>
@@ -139,6 +138,7 @@ class Game extends Component {
     answerIsCorrect: null,
     redraws: 5,
     doneStatus: null,
+    icon: randomIcons(),
   });
 
   state = Game.initialState();
@@ -172,6 +172,7 @@ class Game extends Component {
       selectedNumbers: [],
       answerIsCorrect: null,
       randomNumberOfStars: Game.randomNumber(),
+      icon: randomIcons(),
     }), this.updateDoneStatus);
   };
 
@@ -182,6 +183,7 @@ class Game extends Component {
       answerIsCorrect: null,
       selectedNumbers: [],
       redraws: prevState.redraws - 1,
+      icon: randomIcons(),
     }), this.updateDoneStatus);
   }
 
@@ -204,13 +206,14 @@ class Game extends Component {
   }
 
   render() {
-    const { selectedNumbers, randomNumberOfStars, answerIsCorrect, usedNumbers, redraws, doneStatus } = this.state;
+    const { selectedNumbers, randomNumberOfStars, answerIsCorrect, usedNumbers, redraws, doneStatus, icon } = this.state;
+
     return (
       <div className="container">
         <h3>Play 1-9</h3>
         <hr />
         <div className="row">
-          <Stars numberOfStars={randomNumberOfStars} />
+          <Stars numberOfStars={randomNumberOfStars} icon={icon}/>
           <Button selectedNumbers={selectedNumbers}
                   checkAnswer={this.checkAnswer}
                   answerIsCorrect={answerIsCorrect}

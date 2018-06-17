@@ -1,1 +1,1 @@
-# A Play Nine Game in React
+# A Play 1-9 - A Math Game in React.
